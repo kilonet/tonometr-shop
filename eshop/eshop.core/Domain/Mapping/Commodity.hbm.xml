@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <class name="eshop.core.Domain.Commodity, eshop.Core" table="commodities" >
+        <id name="Id">
+            <column name="item_id"/>
+            <generator class="native"></generator>
+        </id>
+
+        <property name="Name" not-null="true" column="name"></property>
+        <property name="Price" not-null="true" column="price"></property>
+        <many-to-one name="Category" foreign-key="FK_Commodity_Category">
+            <column name="category_id" not-null="true"/>
+        </many-to-one>
+        <property name="Deleted" not-null="true" column="deleted"></property>
+        <property name="SmallPictureFileName" not-null="false" column="small_picture"></property>
+        <property name="PictureFileName" not-null="false" column="picture"></property>
+        <property name="Description" not-null="true" column="description"></property>
+        <property name="ShortDescription" not-null="true" column="short_description"></property>
+        
+
+    </class>
+</hibernate-mapping>

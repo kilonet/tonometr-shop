@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <class name="eshop.core.Domain.Order, eshop.Core" table="orders" >
+        <id name="Id">
+            <column name="order_id"/>
+            <generator class="native"></generator>
+        </id>
+
+        <property name="DateAdded" column="date_added" not-null="true"></property>
+        <set name="Lines" cascade="all" lazy="false">
+            <key column="order_id" foreign-key="FK_Order_OrderLine"/>
+            <one-to-many class="eshop.core.Domain.OrderLine, eshop.Core"/>
+        </set>
+
+        <many-to-one name="User" column="user_id" foreign-key="FK_Order_User" not-null="true"/>
+    
+
+    </class>
+</hibernate-mapping>

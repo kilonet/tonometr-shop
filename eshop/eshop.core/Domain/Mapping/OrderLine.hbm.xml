@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <class name="eshop.core.Domain.OrderLine, eshop.Core" table="order_lines" >
+        <id name="Id">
+            <column name="order_line_id"/>
+            <generator class="native"></generator>
+        </id>
+
+        <property name="Name" column="name" not-null="true"></property>
+        <property name="Price" column="price" not-null="true"></property>
+        <property name="Quantity" column="quantity" not-null="true"></property>
+
+
+    </class>
+</hibernate-mapping>
