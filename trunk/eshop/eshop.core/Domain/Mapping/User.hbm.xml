@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+    <class name="eshop.core.Domain.User, eshop.Core" table="users" >
+        <id name="Id">
+            <column name="user_id"/>
+            <generator class="native"></generator>
+        </id>
+
+        <property name="Login" column="login" not-null="true"></property>
+        <property name="PasswordHash" column="password_hash" not-null="true"></property>
+        <property name="Email" column="email" not-null="true"></property>
+        <property name="Address" column="address" not-null="true"></property>
+        <property name="City" column="city" not-null="true"></property>
+        <property name="FirstName" column="first_name" not-null="true"></property>
+        <property name="LastName" column="last_name" not-null="true"></property>
+        <property name="MiddleName" column="middle_name" not-null="true"></property>
+        <property name="Phone" column="phone" not-null="true"></property>
+        <set name="Orders" >
+            <key column="user_id" foreign-key="FK_User_Order"></key>
+            <one-to-many class="eshop.core.Domain.Order, eshop.Core"/>
+        </set>
+
+
+    </class>
+</hibernate-mapping>
