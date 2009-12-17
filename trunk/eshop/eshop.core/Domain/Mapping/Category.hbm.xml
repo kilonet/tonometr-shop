@@ -6,9 +6,10 @@
             <generator class="native"></generator>
         </id>
 
-        <property name="Name" column="name" not-null="true"></property>
+        <property name="Name" column="name" not-null="true" length="50"></property>
 
-        <many-to-one name="Parent" class="eshop.core.Domain.Category, eshop.Core">
+        <many-to-one name="Parent" class="eshop.core.Domain.Category, eshop.Core" 
+            foreign-key="FK_Category_Category">
             <column name="parent_id"/>
         </many-to-one>
         

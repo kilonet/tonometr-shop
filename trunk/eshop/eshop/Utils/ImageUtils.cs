@@ -20,39 +20,18 @@ namespace eshop.Utils
             float scaleFactor = (float)Math.Max(imgToResize.Width, imgToResize.Height) / THUMB_SIZE;
             size.Height = (int)(imgToResize.Height / scaleFactor);
             size.Width = (int)(imgToResize.Width / scaleFactor);
-//            if (imgToResize.Height > imgToResize.Width)
-//            {
-//                size.Height = THUMB_HEIGHT;
-//                size.Width = (int)(imgToResize.Width / ((float)imgToResize.Height / THUMB_HEIGHT));
-//            } 
-//            else
-//            {
-//                size.Width = THUMB_WIDTH;
-//                size.Height = (int)(imgToResize.Height / ((float)imgToResize.Width / THUMB_WIDTH));
-//            }
-            //int sourceWidth = imgToResize.Width;
-            //int sourceHeight = imgToResize.Height;
 
-            //float nPercent;
 
-            //float nPercentW = size.Width / (float)sourceWidth;
-            //float nPercentH = size.Height / (float)sourceHeight;
-
-            //if (nPercentH < nPercentW)
-            //    nPercent = nPercentH;
-            //else
-            //    nPercent = nPercentW;
-
-            int destWidth = size.Width;//(int)(sourceWidth * nPercent);
-            int destHeight = size.Height;// (int)(sourceHeight * nPercent);
-
-            Bitmap b = new Bitmap(destWidth, destHeight);
+            Bitmap b = new Bitmap(THUMB_SIZE, THUMB_SIZE);
+            
+            int x = (THUMB_SIZE - size.Width) / 2;
+            int y = (THUMB_SIZE - size.Height) / 2;
             Graphics g = Graphics.FromImage(b);
             g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-            g.DrawImage(imgToResize, 0, 0, destWidth, destHeight);
+            g.FillRectangle(new SolidBrush(Color.White), 0, 0, THUMB_SIZE, THUMB_SIZE);
+            g.DrawImage(imgToResize, x, y, size.Width, size.Height);
             g.Dispose();
-
+            
             return b;
         }
 

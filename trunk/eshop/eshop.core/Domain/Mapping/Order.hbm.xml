@@ -12,7 +12,15 @@
             <one-to-many class="eshop.core.Domain.OrderLine, eshop.Core"/>
         </set>
 
-        <many-to-one name="User" column="user_id" foreign-key="FK_Order_User" not-null="true"/>
+        <many-to-one name="User" column="user_id" foreign-key="FK_Order_User" not-null="false"/>
+
+        <component name="ShippingDetails" class="eshop.core.Domain.ShippingDetails, eshop.Core">
+            <property name="Name" not-null="true" length="60" column="name"></property>
+            <property name="Phone" not-null="true" length="60" column="phone"></property>
+            <property name="Address" not-null="true" length="250" column="address"></property>
+            <property name="City" not-null="true" length="60" column="city"></property>
+            <property name="Comment" length="500" column="comment"></property>
+        </component>
     
 
     </class>

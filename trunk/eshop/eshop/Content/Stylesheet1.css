@@ -1,0 +1,219 @@
+﻿/* http://zhilinsky.ru/2007/05/24/css-blochnaya-verstka/ */
+body, html 
+{
+    margin:0;
+    padding:0;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:	0.9em;
+}
+#wrap 
+{
+    margin:0 auto;
+    width:650px;
+}
+#header 
+{
+    padding: 15px;
+    vertical-align: middle;
+}
+#nav
+{
+    padding-bottom: 25px;
+}
+#main 
+{
+    
+    float:left;
+    width:650px;    
+}
+#sidebar 
+{
+    float:left;
+    width:150px;
+}
+#footer 
+{
+    clear: both;
+}
+#rightbar 
+{
+    float:left;
+    width:150px;
+}
+
+/* http://www.onderhond.com/blog/work/floated-multi-row-blocks */
+
+.example {/*background:#dd0;*/ overflow:hidden;width:700px;}
+.example ul {list-style:none; margin:0; padding:0; /*margin-left:-1em; margin-top:-1em;*/}
+.example ul li {width:225px; /*margin-left:1em;*/ margin-top:1em; float:left; /*background:#0dd;*/ /*padding:1em;*/}
+
+.example p {color:#000; font-weight:700; padding:2em;}
+.example a {text-decoration:none; color:#000000; display:block;}
+.example a:hover {color: #369;}
+.example img {border:1px solid #DDDDDD; }
+.example a:hover img {border:1px solid #369; }
+
+		
+.product-name
+{
+    font-size: 2.5em;
+    color: #00539F;
+    font-weight: bold;
+}
+.product-short-description
+{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #A0A0A0;
+}
+
+.price
+{
+    font-size: 1.6em;
+    color: #000000;
+    font-weight: 400;
+}
+
+/* Buttons */
+
+button,
+button span {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	}
+
+button { 
+	padding: 0 23px 0 0;
+	font-size: 0.916666em; /* 11px */
+	text-align: center;
+	font-family: inherit;
+	line-height: normal;
+	text-transform: uppercase;
+	font-weight: 700;
+	background-position: 100% -88px;
+	background-image: url(images/btn.fff.gif);
+	}
+
+button span {
+	padding: 4px 0 0 10px; 
+	height: 18px; 
+	color: #000;
+	background-position: 0 0;
+	background-image: url(images/btn.fff.gif); 
+	}
+
+button.alt { background-image: url(images/btn.f30.gif); }
+button.alt span {
+	color: #fff;
+	background-image: url(images/btn.f30.gif);
+	}
+
+button.cta {
+	font-size: 1em; /* 12px */
+	background-position: 100% -120px;
+	background-image: url(images/btn.f30.cta.gif);
+	}
+
+button.cta span {
+	padding: 8px 0 0 10px;
+	height: 22px;
+	background-image: url(images/btn.f30.cta.gif);
+	}
+
+button:hover,
+button.ajax { background-position: 100% -132px; }
+button:hover span,
+button.ajax span { background-position: 0 -44px; }
+
+button.alt.cta:hover,
+button.alt.cta:active { background-position: 100% -180px; }
+button.alt.cta:hover span,
+button.alt.cta:active span { background-position: 0 -60px; }
+
+button.ajax { padding-right: 10px; }
+
+button.ajax img {
+	position: absolute;
+	left: 10px;
+	top: 3px;
+	z-index: 20;
+	}
+
+button.ajax span { padding-left: 36px; }
+
+button {
+border:0 none;
+cursor:pointer;
+margin:0;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:0;
+overflow:visible;
+padding:0;
+position:relative;
+}
+button::-moz-focus-inner {
+border:0 none;
+padding:0;
+}
+button span {
+display:block;
+position:relative;
+white-space:nowrap;
+}
+button span {
+margin-top:-1px;
+}
+
+button {
+vertical-align: top;
+margin: 1px 0 0 3px;
+
+background-image:url(images/btn.fff.gif);
+background-position:100% -88px;
+font-family:inherit;
+font-size:0.916666em;
+font-weight:700;
+line-height:normal;
+padding:0 23px 0 0;
+text-align:center;
+text-transform:uppercase;
+}
+
+textarea, input {
+border:1px solid #DDDDDD;
+padding:3px;
+
+}
+input, textarea, select {
+font-family:inherit;
+font-size:100%;
+margin:0;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:0;
+}
+
+.link
+{
+    cursor: pointer;
+}
+/***************/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+

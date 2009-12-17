@@ -9,6 +9,6 @@ namespace eshop.core.Dao
         void Update(TEntity entity);
         TEntity Save(TEntity entity);
         void Delete(TEntity entity);
-        IList<TEntity> FindAll();
+        List<TEntity> FindAll();
     }
 }
