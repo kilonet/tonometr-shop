@@ -60,6 +60,11 @@
       <HintPath>..\..\..\my downloads\develop tools\nhibernate\NHibernate-2.1.1.GA-bin\Required_For_LazyLoading\Castle\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=99.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\my downloads\DataAnnotationsModelBinder(2)\dependencies\System.ComponentModel.DataAnnotations.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -94,6 +99,8 @@
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderLine.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Validators\Commodity.Validator.cs" />
+    <Compile Include="Domain\Validators\RuleViolation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +109,15 @@
     <EmbeddedResource Include="Domain\Mapping\Order.hbm.xml" />
     <EmbeddedResource Include="Domain\Mapping\OrderLine.hbm.xml" />
     <EmbeddedResource Include="Domain\Mapping\User.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Cart.cs" />
+    <Compile Include="Domain\ShippingDetails.cs" />
+    <Compile Include="Domain\Validators\Category.Validator.cs" />
+    <Compile Include="NHibernate\DefaultNamingStrategy.cs" />
+    <Compile Include="Services\Impl\DefaultOrderSubmitter.cs" />
+    <Compile Include="Services\Impl\FakeOrderSubmitter.cs" />
+    <Compile Include="Services\IOrderSubmitter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

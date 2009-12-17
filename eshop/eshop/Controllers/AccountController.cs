@@ -12,7 +12,7 @@ namespace eshop.Controllers
 {
 
     [HandleError]
-    public class AccountController : Controller
+    public class AccountController : ControllerSupport
     {
 
         // This constructor is used by the MVC framework to instantiate the controller using

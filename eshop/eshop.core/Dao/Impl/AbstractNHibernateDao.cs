@@ -113,11 +113,15 @@ namespace eshop.core.Dao.Impl
             NHibernateSession.Delete(entity);
         }
 
-        public IList<T> FindAll()
+        public List<T> FindAll()
         {
             return GetByCriteria();
         }
 
+        protected ICriteria CreateCriteria()
+        {
+            return NHibernateSession.CreateCriteria(typeof(T));
+        }
         
 
         /// <summary>

@@ -8,5 +8,6 @@ namespace eshop.core.Dao
 {
     public interface ICommodityDao: IDao<Commodity>
     {
+        IList<Commodity> FindForCategory(Category category);
     }
 }

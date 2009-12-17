@@ -18,5 +18,5 @@
     <% } %>    
 </div>
 
-    
+    <%= this.ToString() %>
 </asp:Content>

@@ -9,7 +9,7 @@ using eshop.Utils;
 namespace eshop.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class HomeController : ControllerSupport
     {
         public ActionResult Index()
         {

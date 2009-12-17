@@ -12,11 +12,6 @@ namespace eshop.core.Dao.Impl
         public List<SelectListItem> FindAllForDropdown()
         {
             List<SelectListItem> categories = new List<SelectListItem>();
-            categories.Add(new SelectListItem
-            {
-                Text = "---",
-                Value = "0"
-            });
             foreach (Category category in FindAll())
             {
                 categories.Add(new SelectListItem

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eshop.core.Domain
 {
-    public class DomainObject
+    public abstract class DomainObject
     {
         public virtual long Id { get; set; }
     }

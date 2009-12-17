@@ -6,7 +6,7 @@ using eshop.core.Domain;
 
 namespace eshop.core.Dao
 {
-    interface IOrderDao: IDao<Order>
+    public interface IOrderDao: IDao<Order>
     {
     }
 }
