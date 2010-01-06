@@ -10,6 +10,8 @@ namespace eshop.core.Dao
     public interface ICategoryDao: IDao<Category>
     {
         List<SelectListItem> FindAllForDropdown();
-        
+
+
+        IList<Category> FindSubCategories(Category category);
     }
 }

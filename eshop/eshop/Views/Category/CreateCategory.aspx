@@ -7,13 +7,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Create</h2>
-
-   
-
+    <h2>Добавление новой категории</h2>
     <% using (Html.BeginForm()) {%>
-    
     <table>
         <tr>
             <td>Название:</td>

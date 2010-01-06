@@ -11,5 +11,12 @@ namespace eshop.ViewModels
     {
         public Category Category { get; set; }
         public List<SelectListItem> ParentCategories { get; set; }
+
+        public CategoryView(Category category)
+        {
+            Category = category;
+        }
+
+        public CategoryView(){}
     }
 }

@@ -17,10 +17,16 @@ namespace eshop.Controllers
     public class CategoryController : ControllerSupport
     {
         private ICategoryDao categoryDao;
+        private ICommodityDao commodityDao;
 
         public ICategoryDao CategoryDao
         {
             set { categoryDao = value; }
+        }
+
+        public ICommodityDao CommodityDao
+        {
+            set { commodityDao = value; }
         }
 
         //
@@ -59,9 +65,6 @@ namespace eshop.Controllers
         public ActionResult Edit(long id)
         {
             Category category = categoryDao.FindById(id);
-            //List<Category> parentCategories = categoryDao.FindAll();
-            //List<SelectListItem> parentCategoriesForView =
-            //    parentCategories.ConvertAll(x => new SelectListItem {Text = x.Name, Value = x.Id.ToString()});
             CategoryView view =
                 new CategoryView
                 {
@@ -82,67 +85,42 @@ namespace eshop.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        [AttachCategories]
         public ActionResult Edit(CategoryView categoryView)
         {
             Category categoryDto = categoryView.Category;
             if (categoryDto.Parent.Id == 0) categoryDto.Parent = null;
             Category category = categoryDao.FindById(categoryDto.Id);
-            if (!categoryDto.IsValid)
+            if (!ModelState.IsValid)
             {
-                foreach (RuleViolation issue in categoryDto.GetRuleViolations())
-                {
-                    ModelState.AddModelError(issue.PropertyName, issue.ErrorMessage);
-                    ModelState.SetModelValue(issue.PropertyName, ValueProvider[issue.PropertyName]);
-                }
+                return View("EditCategory", new CategoryView {Category = category});
             }
             else
             {
                 category.Update(categoryDto);
                 categoryDao.Save(category);
+                return View("EditCategory", new CategoryView {Category = category});
             }
-           
-            return View("EditCategory", new CategoryView {Category = category});
         }
 
-        
-
-        //private CategoryView getCategoryView(Category category)
-        //{
-        //    // parent categories 
-        //    // selected category
-        //    // category to display
-            
-        //    List<SelectListItem> parentCategories = getCategories();
-
-        //    if (category.Parent != null)
-        //    {
-        //        foreach (SelectListItem item in parentCategories)
-        //        {
-        //            if (item.Value == category.Parent.Id.ToString())
-        //            {
-        //                item.Selected = true;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return new CategoryView
-        //               {
-        //                   Category = category,
-        //                   ParentCategories = parentCategories
-        //               };
-        //}
-
-        //private List<SelectListItem> getCategories()
-        //{
-        //    List<SelectListItem> items = new List<SelectListItem> {new SelectListItem {Text = "пусто", Value = ""}};
-        //    items.AddRange(categoryDao.FindAll().ConvertAll
-        //        (x => new SelectListItem
-        //                  {
-        //                      Text = x.Name,
-        //                      Value = x.Id.ToString()
-        //                  }));
-        //    return items;
-        //}
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttachCategories]
+        public ActionResult Delete(Category category)
+        {
+            category = categoryDao.Load(category);
+            IList<Commodity> commodities = commodityDao.FindForCategory(category);
+            if (commodities.Count > 0)
+            {
+                ModelState.AddModelError("non.empty.category", "Нельзя удалить категорию, т. к. есть товары относящиеся к данной категории");
+                return View("EditCategory", new CategoryView(category));
+            }
+            IList<Category> subCategories = categoryDao.FindSubCategories(category);
+            if(subCategories.Count > 0)
+            {
+                ModelState.AddModelError("has.subcategories", "Нельзя удалить категорию, т. к. она содержит дочерние категории");
+                return View("EditCategory", new CategoryView(category));
+            }
+            categoryDao.Delete(category);
+            return RedirectToAction("Index");
+        }
     }
 }

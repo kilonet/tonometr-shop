@@ -7,24 +7,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    
-    <table>
-        <tr>
-            <th>Количество</th>
-            <th>Наименование</th>
-            <th>Цена</th>
-            <th>Сумма</th>
-            <th></th>
-        </tr>
-        <% foreach (OrderLine orderLine in Model.Lines) {%>
-        <tr>
-            <td><%= orderLine.Quantity %></td>
-            <td><%= orderLine.Name %></td>
-            <td><%= orderLine.Price.ToString("C") %></td>
-            <td><%= (orderLine.Price * orderLine.Quantity).ToString("C") %></td>
-        </tr>
-        
-    <%} %>
-    </table>
+   <% Html.RenderPartial("OrderLinesView", Model.Lines); %>
     <% using (Html.BeginForm("Checkout", "Cart"))
        {%>
     <b>Контактные данные</b>
