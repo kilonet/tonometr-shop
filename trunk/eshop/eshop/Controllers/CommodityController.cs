@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using eshop.core.Dao;
 using eshop.core.Domain;
+using eshop.Filters;
+using eshop.FrameworkExtensions;
 using eshop.Models.FormModels;
 using eshop.Utils;
 using eshop.Views.Account;
@@ -50,6 +52,7 @@ namespace eshop.Controllers
 
         //
         // GET: /Commodity/Create
+
 
         public ActionResult Create()
         {
@@ -104,16 +107,16 @@ namespace eshop.Controllers
 
         //
         // GET: /Commodity/Edit/5
- 
+        [AcceptVerbs(HttpVerbs.Get)]
+        [AttachCategories]
         public ActionResult Edit(long id)
         {
             Commodity commodity = commodityDao.FindById(id);
             CommodityView view = new CommodityView
                                                {
-                                                   Categories = categoryDao.FindAllForDropdown(),
                                                    Commodity = commodity
                                                };
-            foreach (SelectListItem item in view.Categories)
+            foreach (SelectListItem item in this.GetCategories())
             {
                 if (int.Parse(item.Value) == commodity.Category.Id)
                 {
@@ -124,24 +127,21 @@ namespace eshop.Controllers
             return View("EditCommodity", view);
         }
 
-        //
-        // POST: /Commodity/Edit/5
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
+        [AttachCategories]
         public ActionResult Edit(CommodityView commodityView)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("EditCommodity", commodityView); 
+            }
             Commodity commodityDto = commodityView.Commodity;
             Commodity commodity = commodityDao.FindById(commodityDto.Id);
             commodity.update(commodityDto);
-            try
-            {
-                commodityDao.Save(commodity);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("EditCommodity");
-            }
+            commodityDao.Save(commodity);
+            return View("EditCommodity", commodityView);
+            
         }
 
         public ActionResult UploadPicture(long commodityId)

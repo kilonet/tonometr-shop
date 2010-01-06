@@ -25,5 +25,10 @@ namespace eshop.core.Domain
             get { return lines; }
             set { lines = value; }
         }
+
+        public virtual decimal GetSumm()
+        {
+            return lines.Sum(l => l.TotalPrice());
+        }
     }
 }

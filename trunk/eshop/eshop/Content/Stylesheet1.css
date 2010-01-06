@@ -75,7 +75,7 @@ body, html
 }
 
 /* Buttons */
-
+/*
 button,
 button span {
 	background-color: transparent;
@@ -84,7 +84,7 @@ button span {
 
 button { 
 	padding: 0 23px 0 0;
-	font-size: 0.916666em; /* 11px */
+	font-size: 0.916666em; 
 	text-align: center;
 	font-family: inherit;
 	line-height: normal;
@@ -109,7 +109,7 @@ button.alt span {
 	}
 
 button.cta {
-	font-size: 1em; /* 12px */
+	font-size: 1em; 
 	background-position: 100% -120px;
 	background-image: url(images/btn.f30.cta.gif);
 	}
@@ -179,12 +179,18 @@ padding:0 23px 0 0;
 text-align:center;
 text-transform:uppercase;
 }
-
-textarea, input {
+*/
+textarea, input[type="text"] {
 border:1px solid #DDDDDD;
 padding:3px;
-
 }
+
+input[type="submit"], input[type="button"] {
+border:1px solid #336699;
+color: #336699;
+background-color: #BFD4FF;
+}
+
 input, textarea, select {
 font-family:inherit;
 font-size:100%;

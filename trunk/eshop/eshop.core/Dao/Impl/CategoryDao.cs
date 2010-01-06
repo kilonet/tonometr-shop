@@ -22,5 +22,13 @@ namespace eshop.core.Dao.Impl
             }
             return categories;
         }
+
+        public IList<Category> FindSubCategories(Category category)
+        {
+            return Session
+                .CreateQuery("from Category as c where c.Parent = :category")
+                .SetEntity("category", category)
+                .List<Category>();
+        }
     }
 }

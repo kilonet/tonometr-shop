@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using eshop.core.Domain;
 using NHibernate;
 using NHibernate.Criterion;
 
 
 namespace eshop.core.Dao.Impl
 {
-    public abstract class AbstractNHibernateDao<T> : IDao<T>
+    public abstract class AbstractNHibernateDao<T> : IDao<T> where T: DomainObject
     {
 
 
@@ -15,12 +16,12 @@ namespace eshop.core.Dao.Impl
         /// </summary>
         public T FindById(long id)
         {
-            return NHibernateSession.Load<T>(id);
+            return Session.Load<T>(id);
         }
 
         public void Update(T entity)
         {
-            NHibernateSession.Update(entity);
+            Session.Update(entity);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace eshop.core.Dao.Impl
         /// </summary>
         public List<T> GetByCriteria(params ICriterion[] criterion)
         {
-            ICriteria criteria = NHibernateSession.CreateCriteria(persitentType);
+            ICriteria criteria = Session.CreateCriteria(persitentType);
 
             foreach (ICriterion criterium in criterion)
             {
@@ -49,7 +50,7 @@ namespace eshop.core.Dao.Impl
 
         public List<T> GetByExample(T exampleInstance, params string[] propertiesToExclude)
         {
-            ICriteria criteria = NHibernateSession.CreateCriteria(persitentType);
+            ICriteria criteria = Session.CreateCriteria(persitentType);
             Example example = Example.Create(exampleInstance);
 
             foreach (string propertyToExclude in propertiesToExclude)
@@ -91,7 +92,7 @@ namespace eshop.core.Dao.Impl
         /// </summary>
         public T Save(T entity)
         {
-            NHibernateSession.Save(entity);
+            Session.Save(entity);
             return entity;
         }
 
@@ -104,13 +105,13 @@ namespace eshop.core.Dao.Impl
         /// </summary>
         public T SaveOrUpdate(T entity)
         {
-            NHibernateSession.SaveOrUpdate(entity);
+            Session.SaveOrUpdate(entity);
             return entity;
         }
 
         public void Delete(T entity)
         {
-            NHibernateSession.Delete(entity);
+            Session.Delete(entity);
         }
 
         public List<T> FindAll()
@@ -118,16 +119,21 @@ namespace eshop.core.Dao.Impl
             return GetByCriteria();
         }
 
+        public T Load(T entity)
+        {
+            return Session.Load<T>(entity.Id);
+        }
+
         protected ICriteria CreateCriteria()
         {
-            return NHibernateSession.CreateCriteria(typeof(T));
+            return Session.CreateCriteria(typeof(T));
         }
         
 
         /// <summary>
         /// Exposes the ISession used within the DAO.
         /// </summary>
-        private ISession NHibernateSession
+        protected ISession Session
         {
             get
             {

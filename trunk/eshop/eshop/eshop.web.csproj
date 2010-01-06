@@ -93,6 +93,7 @@
     <Compile Include="Controllers\CommodityController.cs" />
     <Compile Include="Controllers\ControllerSupport.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,6 +104,7 @@
     <Compile Include="Filters\AbstractRefferenceDataAttribute.cs" />
     <Compile Include="FrameworkExtensions\Container.cs" />
     <Compile Include="FrameworkExtensions\Extensions.cs" />
+    <Compile Include="FrameworkExtensions\HtmlHelpers.cs" />
     <Compile Include="FrameworkExtensions\ViewDataKeys.cs" />
     <Compile Include="FrameworkExtensions\WindsorActionInvoker.cs" />
     <Compile Include="FrameworkExtensions\WindsorExtension.cs" />
@@ -113,7 +115,7 @@
     </Compile>
     <Compile Include="Infrastructure\NHibernateModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\HtmlHelpers\TreeExtension.cs" />
+    <Compile Include="FrameworkExtensions\HtmlHelpers\TreeExtension.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="ViewModels\CategoryView.cs" />
     <Compile Include="ViewModels\CommodityView.cs" />
@@ -443,8 +445,12 @@
     <Content Include="Content\images\logo3.gif" />
     <Content Include="Views\Cart\CompletedView.aspx" />
     <Content Include="Views\Cart\FillShippingDetails.aspx" />
+    <Content Include="Views\Shared\OrderLinesView.ascx" />
     <Content Include="Views\Cart\PreviewOrder.aspx" />
     <Content Include="Views\Cart\ViewCart.aspx" />
+    <Content Include="Views\Order\ListOrders.aspx" />
+    <Content Include="Views\Order\OrderDetails.aspx" />
+    <Content Include="Views\Order\ShippingDetailsView.ascx" />
     <Content Include="Views\Shared\CartControl.ascx" />
     <Content Include="Views\Shared\Site1.Master" />
     <Content Include="Content\images\btn.f30.gif" />
