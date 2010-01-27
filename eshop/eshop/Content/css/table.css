@@ -1,0 +1,34 @@
+﻿.box-table-a
+{
+	margin: 5px;
+	text-align: left;
+	border-collapse: collapse;
+}
+.box-table-a th
+{
+	font-weight: bold;
+	padding: 8px;
+	background: #5D99CF;
+	border-top: 2px solid #087A9F;
+	border-bottom: 1px solid #3B99B8;
+	
+}
+.box-table-a td
+{
+	padding: 8px;
+	background: #7EDBFA; 
+	border-bottom: 1px solid #3B99B8;
+	
+	border-top: 1px solid transparent;
+}
+.box-table-a tr:hover td
+{
+	background: #7AFBA6;
+}
+
+.box-table-a tfoot tr:hover td { background: #7EDBFA; }
+
+.box-table-a a
+{
+	color: #A65805;
+}

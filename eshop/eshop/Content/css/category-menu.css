@@ -1,0 +1,58 @@
+﻿   ul.nav a {
+                text-transform:uppercase;
+                text-decoration: none;
+            }
+            
+            ul.nav a:hover {
+                text-decoration: none;
+                color: #FF8B10;
+            }
+            
+            ul.nav li ul {
+                text-align: left;
+                background: white;
+                border: solid 1px #3486CF;
+                margin: 0;
+                padding: 0;
+            }
+            
+            ul.nav {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                
+            }
+            
+            ul.nav li {
+                display: inline;
+                padding: .2em 1em;
+                position: relative;
+            }
+            
+            ul.nav li ul li {
+                display: block;
+                list-style: none;
+                white-space:nowrap;
+                margin: -6px;
+                letter-spacing:-1px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                
+            }
+            
+            li ul {
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                display: none;
+            }
+            /* Fix IE. Hide from IE Mac \*/
+            * html ul li { float: left; height: 1%; }
+            * html ul li a { height: 1%; }
+            /* End */
+
+            * html ul li a {
+                height: 1%;
+            }
+            /* End */
+            li:hover ul, li.over ul { display: block; }

@@ -10,7 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2><%= PageTitle %></h2>
-    <table>
+    <table class="box-table-a">
         <tr>
             <th></th>
             <th>Номер</th>

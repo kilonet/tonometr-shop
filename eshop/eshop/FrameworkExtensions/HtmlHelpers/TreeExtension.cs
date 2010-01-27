@@ -52,7 +52,7 @@ namespace eshop.Utils.HtmlHelpers
             foreach (var subCategory in category.SubCategories)
             {
                 if (subCategory.SubCategories.Count > 0)
-                    html += string.Format("<li>{0}", subCategory.Name);
+                    html += string.Format("<li><a href=\"#\">{0}</a>", subCategory.Name);
                 else
                     html += string.Format("<li><a href=\"{0}\">{1}</a>", VirtualPathUtility.ToAbsolute("~/Commodity/Category/" + subCategory.Id), subCategory.Name);    
 

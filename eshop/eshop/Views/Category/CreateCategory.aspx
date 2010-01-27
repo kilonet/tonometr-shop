@@ -28,13 +28,13 @@
             <td colspan="2"> <%= Html.ValidationSummary("При вводе данных были допущены ошибки") %></td>
         </tr>
     </table>
-    <input type="submit" value="Create" />
+    <input type="submit" value="Создать" />
         
 
     <% } %>
 
     <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
+        <%=Html.ActionLink("Назад к списку", "Index") %>
     </div>
 
 </asp:Content>

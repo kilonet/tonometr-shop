@@ -6,7 +6,8 @@ using eshop.core.Domain;
 
 namespace eshop.core.Dao
 {
-    interface IUserDao: IDao<User>
+    public interface IUserDao: IDao<User>
     {
+        User FindByName(string userName);
     }
 }

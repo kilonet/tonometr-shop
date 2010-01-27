@@ -31,6 +31,22 @@ namespace eshop.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Remove(string name, Cart cart)
+        {
+            int indexToRemove = -1;
+            for (int i = 0; i < cart.Lines.Count; i++ )
+            {
+                if (cart.Lines[i].Name == name)
+                {
+                    indexToRemove = i;
+                    break;
+                }
+            }
+            cart.Lines.RemoveAt(indexToRemove);
+            return RedirectToAction("Index");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult CheckOut(Cart cart, ShippingDetails shippingDetails)
         {
             if (cart.Lines.Count < 1) 

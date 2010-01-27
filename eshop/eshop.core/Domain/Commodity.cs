@@ -13,6 +13,7 @@ namespace eshop.core.Domain
         public virtual string Name { get; set; }
 
         [Required(ErrorMessage = "Введите цену товара")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Цена должна быть больше 0")]
         public virtual decimal Price { get; set; }
 
         public virtual Category Category { get; set; }

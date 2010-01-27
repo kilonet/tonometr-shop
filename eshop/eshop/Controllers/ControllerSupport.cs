@@ -16,10 +16,8 @@ namespace eshop.Controllers
         {
             ViewData["categories"] = NHibernateSessionManager.Instance.GetSession().CreateQuery("from Category").List<Category>();    
             NHibernateSessionManager.Instance.GetSession().Clear();
-
-            
-         
-            
         }
+
+
     }
 }
