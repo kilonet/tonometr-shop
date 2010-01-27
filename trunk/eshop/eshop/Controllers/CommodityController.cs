@@ -11,6 +11,7 @@ using eshop.Filters;
 using eshop.FrameworkExtensions;
 using eshop.Models.FormModels;
 using eshop.Utils;
+using eshop.ViewModels;
 using eshop.Views.Account;
 using Category=eshop.core.Domain.Category;
 
@@ -32,28 +33,20 @@ namespace eshop.Controllers
             set { commodityDao = value; }
         }
 
-        //
-        // GET: /Commodity/
-
-        public ActionResult Index(long? id)
+        public ActionResult Index(long id)
         {
-            return id.HasValue
-                       ? View("ListCommodities", commodityDao.FindForCategory(categoryDao.FindById(id.Value)))
-                       : View("ListCommodities", commodityDao.FindAll());
+            ListCommoditiesView view = new ListCommoditiesView();
+            view.Category = categoryDao.FindById(id);
+            view.Commodities = commodityDao.FindForCategory(view.Category);
+            return View("ListCommodities", view);
         }
-
-        //
-        // GET: /Commodity/Details/5
 
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        //
-        // GET: /Commodity/Create
-
-
+        [Authorize]
         public ActionResult Create()
         {
             return View("CreateCommodity", new CommodityView
@@ -63,11 +56,15 @@ namespace eshop.Controllers
                             });
         } 
 
-        //
-        // POST: /Commodity/Create
+        [Authorize]
+        public ActionResult List()
+        {
+            return View("ListCommoditiesAdmin", commodityDao.FindAll());
+        }
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
+        [Authorize]
         public ActionResult Create(CommodityView commodityView)
         {
             Commodity commodityDto = commodityView.Commodity;
@@ -109,6 +106,7 @@ namespace eshop.Controllers
         // GET: /Commodity/Edit/5
         [AcceptVerbs(HttpVerbs.Get)]
         [AttachCategories]
+        [Authorize]
         public ActionResult Edit(long id)
         {
             Commodity commodity = commodityDao.FindById(id);
@@ -124,12 +122,14 @@ namespace eshop.Controllers
                     break;
                 }
             }
+            string d = this.User.Identity.Name;
             return View("EditCommodity", view);
         }
 
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         [AttachCategories]
+        [Authorize]
         public ActionResult Edit(CommodityView commodityView)
         {
             if (!ModelState.IsValid)
@@ -144,6 +144,7 @@ namespace eshop.Controllers
             
         }
 
+        [Authorize]
         public ActionResult UploadPicture(long commodityId)
         {
             foreach (string inputTagName in Request.Files)
@@ -189,7 +190,7 @@ namespace eshop.Controllers
             Commodity commodity = commodityDao.FindById(commodityId);
             cart.AddItem(commodity, quantity);
 
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", new {Id = commodity.Category.Id});
         }
     }
 }

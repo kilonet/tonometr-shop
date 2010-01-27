@@ -1,0 +1,11 @@
+﻿/* http://www.onderhond.com/blog/work/floated-multi-row-blocks */
+
+.example {/*background:#dd0;*/ overflow:hidden;width:700px;}
+.example ul {list-style:none; margin:0; padding:0; /*margin-left:-1em; margin-top:-1em;*/}
+.example ul li {width:225px; /*margin-left:1em;*/ margin-top:1em; float:left; /*background:#0dd;*/ /*padding:1em;*/}
+
+.example p {color:#000; font-weight:700; padding:2em;}
+.example a {text-decoration:none; color:#000000; display:block;}
+.example a:hover {color: #FF8B10;}
+.example img {border:1px solid #DDDDDD; }
+.example a:hover img {border:1px solid #FF8B10; }

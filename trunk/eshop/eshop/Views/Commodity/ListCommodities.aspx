@@ -1,16 +1,15 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Commodity>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ListCommoditiesView>" %>
+<%@ Import Namespace="eshop.FrameworkExtensions"%>
+<%@ Import Namespace="eshop.ViewModels"%>
 <%@ Import Namespace="eshop.core.Domain"%>
 
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+	<%= Html.PageTitle()%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2><%= Html.CommodityListPageTitle(Model.Category) %></h2>
 
     <%--<table>
         <tr>
@@ -73,7 +72,7 @@
     </table>--%>
     <div class="example">
         <ul> 
-        <% foreach (Commodity commodity in Model)
+        <% foreach (Commodity commodity in Model.Commodities)
            {%>
                 <li>
                         <a href="/Commodity/Details/<%= commodity.Id %>">
@@ -85,9 +84,5 @@
         <% } %>
         </ul>
     </div>
-    <p>
-        <%= Html.ActionLink("Create New", "Create") %>
-    </p>
-
 </asp:Content>
 
